@@ -1,11 +1,8 @@
 //
 // Created by Cavide Balki Gemirter on 16.11.2020.
 //
-
 #include <stdio.h>
-#include <mpi.h>
 #include <stdlib.h>
-#include <string.h>
 
 typedef enum {
     false, true
@@ -55,4 +52,26 @@ void printMatrix(char *id, int rowCount, int columnCount, int matrix[rowCount][c
     }
     printf("Process %d:\t\t\t%s", my_id, s);
     free(s);
+}
+
+void generateMatrix() {
+    int N = 12;
+    int matrixA[N][N];
+    int matrixB[N][N];
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            matrixA[i][j] = (i * N) + j + 1;
+        }
+    }
+
+    printMatrix("Matrix A", N, N, matrixA, 0);
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            matrixB[i][j] = (j + 1);
+        }
+    }
+
+    printMatrix("Matrix B", N, N, matrixB, 0);
 }
